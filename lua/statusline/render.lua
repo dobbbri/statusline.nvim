@@ -1,7 +1,7 @@
 local mode = require("statusline.mode")
--- local git = require("statusline.git")
+local git = require("statusline.git")
 local diagnostics = require("statusline.diagnostics")
--- local icons = require("statusline.icons")
+local icons = require("statusline.icons")
 local lsp = require("statusline.lsp")
 
 local M = {}
@@ -21,9 +21,9 @@ function M.render()
     "%#StBase#",
     mode.get(),
     " ",
-    -- git.get(),
+    git.get(),
     "%#StBase# ",
-    -- icons.get(),
+    icons.get(),
     "%#StFileName#%t ",
     "%#StFileModifiedIcon#",
     is_modified and "●" or "",

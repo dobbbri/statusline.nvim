@@ -7,16 +7,16 @@ function M.get()
     return ""
   end
 
-  local branch = dict.head and ("%#StGitDelete#  %#StGitBranch#" .. dict.head .. " ") or ""
+  local branch = dict.head and ("%#StGitDelete#  %#StGitBranch#" .. dict.head .. " ") or ""
   local added = dict.added and dict.added > 0 and ("%#StGitAdd#+" .. dict.added .. " ") or ""
   local changed = dict.changed and dict.changed > 0 and ("%#StGitChange#~" .. dict.changed .. " ") or ""
   local removed = dict.removed and dict.removed > 0 and ("%#StGitDelete#-" .. dict.removed .. " ") or ""
 
-  local diff = added .. changed .. removed
-  if branch == "" and diff == "" then
+  if branch == "" and added == "" and changed == "" and removed == "" then
     return ""
   end
-  return branch .. diff
+
+  return branch .. added .. changed .. removed
 end
 
 return M

@@ -113,7 +113,7 @@ The original `statusline.lua` was a single file meant to be `require`d (or sourc
 - Logic was split into one module per segment under `lua/statusline/`, each returning a small table with a `get()` function, so segments can be tested, reused, or disabled independently.
 - `vim.g.CustomStatusLine` (a global function) was replaced with `require('statusline.render').render()`, called via `v:lua.require(...)`, so nothing leaks into the global namespace.
 - Setup was wrapped in `M.setup(opts)` instead of running unconditionally at require-time, and now accepts a `highlights` config table.
-- Icon lookups now check that `mini.icons` is actually configured (`vim.g.miniIcons`) before calling into it, rather than assuming it's always present.
+- Icon lookups use `pcall(require, "mini.icons")` before calling into it, rather than assuming it's always present. (An earlier draft read from `vim.g.miniIcons`, but `vim.g` can't reliably hold a Lua table containing functions and would sometimes collapse it to a boolean, causing an "attempt to index a boolean value" error.)
 - The stray `vim.cmd("redrawstatus")` that ran once at load time was removed, since `setup()` runs before the window is drawn and Neovim will draw the statusline on its own; the autocommands handle redraws after that.
 
 ## License

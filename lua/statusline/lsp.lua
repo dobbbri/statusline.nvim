@@ -2,17 +2,17 @@ local M = {}
 
 --- @return string  Statusline-formatted list of attached LSP client names for the current buffer
 function M.get_clients()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local clients = vim.lsp.get_clients({ bufnr = bufnr })
+  local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
   if next(clients) == nil then
     return ""
   end
-  local client_names = {}
+
+  local names = {}
   for _, client in ipairs(clients) do
-    local alt_text = string.gsub(client.name, "mini.", "")
-    table.insert(client_names, alt_text)
+    names[#names + 1] = (client.name:gsub("^mini%.", ""))
   end
-  return "   " .. table.concat(client_names, ", ")
+
+  return "   " .. table.concat(names, ", ")
 end
 
 return M

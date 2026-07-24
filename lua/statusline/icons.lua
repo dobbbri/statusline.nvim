@@ -2,10 +2,11 @@ local M = {}
 
 --- @return string  Statusline-formatted filetype icon, or "" if mini.icons isn't set up
 function M.get()
-  if not vim.g.miniIcons then
+local has, miniIcons = pcall(require, 'mini.icons')
+  if not has then
     return ""
   end
-  local icon, icon_hl = vim.g.miniIcons.get("file", vim.fn.expand("%:t"))
+  local icon, icon_hl = miniIcons.get("file", vim.fn.expand("%:t"))
   if not icon then
     return ""
   end

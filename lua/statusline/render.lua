@@ -25,7 +25,7 @@ function M.render()
     .. git.get()
     .. "%#StBase#"
     .. " "
-    .. icons.get()
+    -- .. icons.get()
     .. "%#StFileName#"
     .. filename
     .. " "

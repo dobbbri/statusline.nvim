@@ -1,8 +1,8 @@
 local mode = require("statusline.mode")
 local git = require("statusline.git")
 local diagnostics = require("statusline.diagnostics")
-local icons = require("statusline.icons")
-local lsp = require("statusline.lsp")
+-- local icons = require("statusline.icons")
+-- local lsp = require("statusline.lsp")
 
 local M = {}
 
@@ -23,7 +23,7 @@ function M.render()
     " ",
     git.get(),
     "%#StBase# ",
-    icons.get(),
+    -- icons.get(),
     "%#StFileName#%t ",
     "%#StFileModifiedIcon#",
     is_modified and "●" or "",
@@ -34,7 +34,7 @@ function M.render()
   local right = {
     "%#StBase#%=",
     "%#StGitChange#",
-    lsp.get_clients(),
+    -- lsp.get_clients(),
     "  %#StInfo# ",
     vim.bo.fileencoding,
     " ",

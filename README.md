@@ -66,27 +66,27 @@ require("statusline").setup({
 })
 ```
 
-Highlight groups used, with their defaults:
+Colors are defined once in a named palette (`green`, `red`, `yellow`, `blue`, `gray`, `white`) inside `lua/statusline/init.lua`, and highlight groups reference that palette instead of repeating hex codes. Several groups intentionally share a color:
 
-| Group | Purpose | Default fg |
-|---|---|---|
-| `StModeNormal` | Normal mode label | `#83c092` |
-| `StModeInsert` | Insert mode label | `#F7F1DE` |
-| `StModeVisual` | Visual/V-line/V-block label | `#d699b6` |
-| `StModeOther` | Command/Replace/Terminal/etc. label | `#e67e80` |
-| `StGitBranch` | Git branch name text | `#F7F1DE` |
-| `StGitAdd` | Added lines count | `#a7c080` |
-| `StGitChange` | Changed lines count (also used for LSP client list) | `#dbbc7f` |
-| `StGitDelete` | Removed lines count / branch icon | `#e67e80` |
-| `StFileName` | Filename text | `#FFFFFF` |
-| `StFileModifiedIcon` | Modified-buffer dot | `#8DC07C` |
-| `StError` | Diagnostic error count | `#e67e80` |
-| `StWarning` | Diagnostic warning count | `#dbbc7f` |
-| `StHints` | Diagnostic hint count | `#A5E9DD` |
-| `StInfo` | Diagnostic info count / encoding / position | `#B0BA99` |
-| `StBase` | Transparent background base | — |
+| Group | Purpose | Palette color | Hex |
+|---|---|---|---|
+| `StModeNormal` | Normal mode label | `green` | `#83c092` |
+| `StModeInsert` | Insert mode label | `white` | `#FFFFFF` |
+| `StModeVisual` | Visual/V-line/V-block label | `yellow` | `#dbbc7f` |
+| `StModeOther` | Command/Replace/Terminal/etc. label | `red` | `#e67e80` |
+| `StGitBranch` | Git branch name text | `white` | `#FFFFFF` |
+| `StGitAdd` | Added lines count | `green` | `#83c092` |
+| `StGitChange` | Changed lines count (also used for LSP client list) | `yellow` | `#dbbc7f` |
+| `StGitDelete` | Removed lines count / branch icon | `red` | `#e67e80` |
+| `StFileName` | Filename text | `white` | `#FFFFFF` |
+| `StFileModifiedIcon` | Modified-buffer dot | `green` | `#83c092` |
+| `StError` | Diagnostic error count | `red` | `#e67e80` |
+| `StWarning` | Diagnostic warning count | `yellow` | `#dbbc7f` |
+| `StHints` | Diagnostic hint count | `blue` | `#A5E9DD` |
+| `StInfo` | Diagnostic info count / encoding / position | `gray` | `#B0BA99` |
+| `StBase` | Transparent background base | — | — |
 
-Highlights are re-applied automatically on `ColorScheme` change.
+To restyle everything at once, override the palette-derived groups via `setup({ highlights = {...} })` as shown above, or edit the `colors` table directly if you're forking the plugin. Highlights are re-applied automatically on `ColorScheme` change.
 
 ## Project layout
 

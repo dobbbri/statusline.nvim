@@ -2,7 +2,7 @@ local M = {}
 
 --- @return string  Statusline-formatted filetype icon, or "" if mini.icons isn't set up
 function M.get()
-local has, miniIcons = pcall(require, 'mini.icons')
+  local has, miniIcons = pcall(require, "mini.icons")
   if not has then
     return ""
   end
